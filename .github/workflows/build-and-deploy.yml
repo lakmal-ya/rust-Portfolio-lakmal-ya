@@ -1,0 +1,102 @@
+# GitHub Actions workflow for Rust portfolio - Builds site generator, deploys to S3 + CloudFront
+name: Build and Deploy Rust Portfolio to S3
+
+# Controls when the action will run
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  AWS_REGION: us-east-1
+  RUST_BACKTRACE: 1
+
+# Permissions for GitHub OIDC token and repository access
+permissions:
+  id-token: write   # Required for JWT token for AWS OIDC
+  contents: read    # Required for actions/checkout
+
+jobs:
+  BuildAndDeploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: '.'
+        
+      - name: Build Rust portfolio generator
+        run: cargo build --release
+        
+      - name: Run portfolio site generator
+        run: cargo run --release
+        
+      - name: Verify build output
+        run: |
+          echo "Checking generated files..."
+          ls -lah dist/
+          ls -lah dist/css/
+          ls -lah dist/js/
+        
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-artifacts
+          path: dist/
+          retention-days: 7
+        
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE }}
+          role-session-name: GitHub_to_AWS_S3_Deployment
+          aws-region: ${{ vars.AWS_REGION }}
+      
+      - name: Verify AWS credentials
+        run: |
+          echo "AWS Identity:"
+          aws sts get-caller-identity
+          
+      - name: Deploy to S3
+        run: |
+          echo "Deploying dist/ to S3 bucket..."
+          aws s3 sync dist/ s3://${{ vars.AWS_S3 }}/ --delete --cache-control "public, max-age=3600"
+          echo "Deployment complete!"
+          
+      - name: Invalidate CloudFront distribution
+        if: vars.AWS_CID != ''
+        run: |
+          echo "Invalidating CloudFront distribution..."
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.AWS_CID }} \
+            --paths "/*"
+          echo "CloudFront invalidation initiated!"
+        
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "✓ Portfolio successfully built and deployed!"
+          echo "📍 Location: s3://${{ vars.AWS_S3 }}/"
+          echo "🌐 Website: https://dulanjanalakmal.us"
+
+  # Optional: Security scanning for dependencies
+  Security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run Rust security audit
+        uses: rustsec/audit-check-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

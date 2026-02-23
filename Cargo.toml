@@ -1,0 +1,19 @@
+[package]
+name = "portfolio"
+version = "1.0.0"
+edition = "2021"
+description = "Dulanjana Lakmal - DevOps Engineer Portfolio Static Site Generator"
+authors = ["Dulanjana Lakmal <dulanjanalakmal@gmail.com>"]
+
+[[bin]]
+name = "portfolio"
+path = "src/main.rs"
+
+[dependencies]
+# No external dependencies needed - we generate pure HTML/CSS/JS
+# All portfolio data is embedded directly in the Rust source
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

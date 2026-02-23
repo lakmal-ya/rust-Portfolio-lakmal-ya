@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and fill in your values
+# NEVER commit terraform.tfvars to git
+
+aws_region  = "us-east-1"
+bucket_name = "dulanjanalakmal-portfolio"   # must be globally unique
+domain_name = ""                             # e.g. "dulanjanalakmal.us"

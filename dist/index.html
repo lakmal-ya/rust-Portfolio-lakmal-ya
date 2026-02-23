@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dulanjana Lakmal | DevOps Engineer</title>
+  <meta name="description" content="Senior Cloud Solutions Engineer with 6+ years cloud infrastructure expertise. AWS, Azure, Terraform, DevOps, Solution Architecture. RHCSA, AWS Certified." />
+  <meta name="keywords" content="Cloud Engineer, DevOps, AWS, Azure, Terraform, Infrastructure as Code, Solution Architecture, Zabbix, CI/CD" />
+  <meta name="author" content="Dulanjana Lakmal" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dulanjana Lakmal | Senior Cloud Solutions Engineer" />
+  <meta property="og:description" content="Senior Cloud Solutions Engineer at IGT1 Lanka | 6+ years cloud infrastructure, DevOps, and solution design expertise" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dulanjana Lakmal",
+    "jobTitle": "Senior Cloud Solutions Engineer",
+    "url": "https://dulanjanalakmal.us",
+    "telephone": "+94 76 720 9582",
+    "email": "dulanjanalakmal@hotmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/dulanjanalakmal",
+      "https://medium.com/@dulanjanalakmal",
+      "https://stackoverflow.com/users/18972104/dulanjana-lakmal"
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">DL</span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about"          class="nav-link">About</a>
+        <a href="#skills"         class="nav-link">Skills</a>
+        <a href="#experience"     class="nav-link">Experience</a>
+        <a href="#projects"       class="nav-link">Projects</a>
+        <a href="#certifications" class="nav-link">Certs</a>
+        <a href="#contact"        class="nav-link">Contact</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-terminal card">
+        <div class="terminal-header">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">dulanjana@aws:~</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$ </span>
+            <span class="terminal-cmd" id="typing-cmd"></span>
+            <span class="terminal-cursor">&#x25ae;</span>
+          </div>
+          <div class="terminal-output" id="terminal-output"></div>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          Available for opportunities
+        </div>
+        <h1 class="hero-name">
+          Dulanjana<br />
+          <span class="hero-name-accent">Lakmal</span>
+        </h1>
+        <p class="hero-title">Senior Cloud Solutions <span class="text-accent">Engineer</span></p>
+        <p class="hero-desc">
+          6+ years designing and managing cloud infrastructure across AWS, Azure, and GCP.
+          Specialist in Infrastructure as Code, DevOps automation, solution architecture, and technical enablement.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">6+</span>
+            <span class="stat-label">Years Exp</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Cloud Platforms</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Certs</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#contact"  class="btn btn-primary">Get In Touch</a>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-orbs" aria-hidden="true">
+      <div class="orb orb-1">AWS</div>
+      <div class="orb orb-2">K8s</div>
+      <div class="orb orb-3">&#x1F980;</div>
+      <div class="orb orb-4">TF</div>
+      <div class="orb orb-5">CI/CD</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 01</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text card">
+          <p>I'm a <strong class="text-accent">Cloud & DevOps Engineer</strong> based in Galle, Sri Lanka,
+          with 6+ years of experience across multiple industries designing, deploying, and optimizing cloud infrastructure at scale.</p>
+          <p>Currently a Senior Cloud Solutions Engineer at <strong class="text-accent">IGT1 Lanka</strong>, I specialize in multi-cloud architecture across AWS, Azure, and GCP, Infrastructure as Code with Terraform and CloudFormation, CI/CD automation with Jenkins and ArgoCD, and comprehensive solution architecture that aligns technology with business needs.</p>
+          <p>Beyond my day-to-day work, I'm a <strong class="text-accent">medium-level tech article writer</strong>,
+          sharing insights on DevOps best practices, cloud optimization, and automation strategies. My goal is to empower engineers and teams to adopt modern practices, optimize cloud costs, and automate workflows for better productivity.</p>
+          <div class="about-highlights">
+            <div class="highlight-item"><span class="highlight-icon">&#x2601;</span><span>Multi-cloud expertise (AWS, Azure, GCP)</span></div>
+            <div class="highlight-item"><span class="highlight-icon">&#x1F3D7;</span><span>RHCSA & AWS Certified</span></div>
+            <div class="highlight-item"><span class="highlight-icon">&#x1F680;</span><span>Solution Architecture &amp; CI/CD</span></div>
+            <div class="highlight-item"><span class="highlight-icon">&#x1F4DD;</span><span>Technical writer &amp; mentor</span></div>
+          </div>
+        </div>
+        <div class="about-aside">
+          <div class="card profile-card">
+            <div class="profile-avatar">
+              <div class="avatar-ring">
+                <div class="avatar-inner">DL</div>
+              </div>
+            </div>
+            <h3 class="profile-name">Dulanjana Lakmal</h3>
+            <p class="profile-role">Senior Cloud Solutions Engineer</p>
+            <div class="profile-info">
+              <div class="info-row">
+                <span class="info-label">Location</span>
+                <span class="info-value">Galle, Sri Lanka</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Phone</span>
+                <span class="info-value">+94 76 720 9582</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Email</span>
+                <span class="info-value">dulanjanalakmal@hotmail.com</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Website</span>
+                <span class="info-value">dulanjanalakmal.us</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 02</span>
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category"><h3 class="skill-category-title">Cloud & Infrastructure</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#FF9900;">AWS</span> <span class="skill-badge" style="--accent:#0078D4;">Azure</span> <span class="skill-badge" style="--accent:#4285F4;">GCP</span> <span class="skill-badge" style="--accent:#FF9900;">EC2</span> <span class="skill-badge" style="--accent:#FF9900;">S3</span> <span class="skill-badge" style="--accent:#FF9900;">CloudFront</span> <span class="skill-badge" style="--accent:#FF9900;">RDS</span> <span class="skill-badge" style="--accent:#FF9900;">VPC</span> <span class="skill-badge" style="--accent:#FF9900;">IAM</span></div></div>
+<div class="skill-category"><h3 class="skill-category-title">DevOps & Infrastructure as Code</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#7B42BC;">Terraform</span> <span class="skill-badge" style="--accent:#FF9900;">CloudFormation</span> <span class="skill-badge" style="--accent:#EE0000;">Ansible</span> <span class="skill-badge" style="--accent:#326CE5;">Kubernetes</span> <span class="skill-badge" style="--accent:#2496ED;">Docker</span> <span class="skill-badge" style="--accent:#FCC624;">Linux</span></div></div>
+<div class="skill-category"><h3 class="skill-category-title">CI/CD & Automation</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#D24939;">Jenkins</span> <span class="skill-badge" style="--accent:#EF7B4D;">ArgoCD</span> <span class="skill-badge" style="--accent:#10b981;">GitHub Actions</span> <span class="skill-badge" style="--accent:#F05032;">Git</span> <span class="skill-badge" style="--accent:#4EAA25;">Bash Scripting</span></div></div>
+<div class="skill-category"><h3 class="skill-category-title">Monitoring & Solutions</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#E42528;">Zabbix</span> <span class="skill-badge" style="--accent:#E6522C;">Prometheus</span> <span class="skill-badge" style="--accent:#F46800;">Grafana</span> <span class="skill-badge" style="--accent:#FF9900;">CloudWatch</span> <span class="skill-badge" style="--accent:#4CAF50;">REST APIs</span></div></div>
+<div class="skill-category"><h3 class="skill-category-title">Core Competencies</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#9C27B0;">Solution Architecture</span> <span class="skill-badge" style="--accent:#FF6F00;">DevOps Engineering</span> <span class="skill-badge" style="--accent:#2196F3;">System Administration</span> <span class="skill-badge" style="--accent:#009688;">Cloud Operations</span> <span class="skill-badge" style="--accent:#CC0000;">RHCSA</span></div></div>
+<div class="skill-category"><h3 class="skill-category-title">Languages & Database</h3><div class="skill-badges"><span class="skill-badge" style="--accent:#4EAA25;">Bash</span> <span class="skill-badge" style="--accent:#3776AB;">Python</span> <span class="skill-badge" style="--accent:#00758F;">MySQL</span> <span class="skill-badge" style="--accent:#13AA52;">MongoDB</span> <span class="skill-badge" style="--accent:#0078D4;">Windows Server</span></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">Senior Cloud Solutions Engineer</h3><p class="timeline-company">IGT1 Lanka - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">August 2025 - Present</span><span class="timeline-location">Colombo, Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Design and deploy scalable cloud infrastructure solutions leveraging AWS, Azure, and GCP.</li>
+<li>Build Infrastructure as Code solutions using Terraform and CloudFormation for enterprise clients.</li>
+<li>Implement CI/CD pipelines and DevOps best practices to streamline deployment processes.</li>
+<li>Lead cloud architecture reviews and provide technical guidance on solution design.</li>
+<li>Manage and optimize cloud costs while maintaining security and performance standards.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">Cloud Operations Engineer</h3><p class="timeline-company">EY - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">January 2023 - July 2025</span><span class="timeline-location">Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Developed Infrastructure as Code (IAC) with Terraform, ensuring efficient AWS resource utilization tailored to project needs.</li>
+<li>Automated deployment processes using Jenkins and ArgoCD, significantly reducing manual errors and improving operational efficiency.</li>
+<li>Led POC initiatives for VMs and VNets, validating setups before deployment, which decreased deployment errors and increased reliability.</li>
+<li>Managed multi-cloud infrastructure across AWS and Azure, optimizing for cost and performance.</li>
+<li>Implemented monitoring and alerting solutions reducing mean time to resolution (MTTR).</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">DevOps Engineer</h3><p class="timeline-company">KeenEye - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">July 2022 - December 2022</span><span class="timeline-location">Western Province, Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Built and maintained robust CI/CD pipelines, enhancing code integration and deployment efficiency.</li>
+<li>Developed infrastructure as code (IAC) using Terraform and Ansible, streamlining infrastructure management.</li>
+<li>Automated deployment processes using Jenkins, significantly reducing release cycle times.</li>
+<li>Proactively monitored application performance and infrastructure health, leading to swift issue resolution and reduced downtime.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">DevOps Engineer</h3><p class="timeline-company">EFutures Private Limited - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">August 2021 - July 2022</span><span class="timeline-location">Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Collaborated with product development and QA teams to ensure delivery of high-quality software products.</li>
+<li>Maintained high system availability using Jenkins, Docker, and Git for efficient DevOps operations.</li>
+<li>Configured and managed AWS services such as S3, EC2, RDS, and VPC for optimal cloud performance.</li>
+<li>Automated system tasks with custom Bash and Python scripts, enhancing operational efficiency.</li>
+<li>Increased system uptime by maintaining and monitoring AWS services with proactive alerting.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">Associate System Administrator</h3><p class="timeline-company">EFutures Private Limited - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">October 2019 - May 2021</span><span class="timeline-location">Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Managed AWS cloud services including EC2, S3, RDS, and ELB, ensuring robust cloud operations.</li>
+<li>Handled MySQL, Icinga2, and MongoDB for efficient database management and monitoring.</li>
+<li>Installed and configured web servers like Apache and Nginx for secure and efficient operations.</li>
+<li>Optimized cloud resource usage through effective AWS service management and cost optimization.</li>
+<li>Improved database performance and uptime with proactive monitoring and management strategies.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">System Administrator</h3><p class="timeline-company">EFutures Private Limited - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">May 2019 - October 2019</span><span class="timeline-location">Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Managed cloud platforms including AWS, GCP, and Azure, ensuring optimal performance.</li>
+<li>Administered Linux and Windows servers, maintaining system stability and performance.</li>
+<li>Worked with version control systems to ensure efficient and organized code management.</li>
+<li>Enhanced web server performance by optimizing configurations and reducing incidents.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card card"><div class="timeline-header"><div><h3 class="timeline-role">Hardware Engineer</h3><p class="timeline-company">State Pharmaceutical Corporation - Full-time</p></div><div class="timeline-meta"><span class="timeline-date">October 2015 - December 2016</span><span class="timeline-location">Sri Lanka</span></div></div><ul class="timeline-bullets"><li>Installed and maintained computer systems and networks to ensure smooth operations.</li>
+<li>Efficiently diagnosed and resolved hardware and software issues.</li>
+<li>Troubleshot ADSL routers and printers to maintain network and device functionality.</li>
+<li>Improved network reliability through effective troubleshooting and proactive maintenance.</li></ul></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 04</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x2601;</span><h3 class="project-title">Complete Cloud Infrastructure Solutions</h3></div><p class="project-desc">Architected and deployed enterprise-grade cloud infrastructure on AWS, Azure, and GCP encompassing IAC with Terraform, automated deployments, and scalable architectures.</p><div class="project-tags"><span class="project-tag">AWS</span> <span class="project-tag">Azure</span> <span class="project-tag">GCP</span> <span class="project-tag">Terraform</span> <span class="project-tag">CloudFormation</span></div><a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+<div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x2699;</span><h3 class="project-title">DevOps Automation & CI/CD Pipelines</h3></div><p class="project-desc">Implemented robust CI/CD pipelines using Jenkins and ArgoCD with automated testing, containerization, and multi-environment deployments reducing release cycles significantly.</p><div class="project-tags"><span class="project-tag">Jenkins</span> <span class="project-tag">ArgoCD</span> <span class="project-tag">Docker</span> <span class="project-tag">Automation</span> <span class="project-tag">Bash</span></div><a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+<div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x1F680;</span><h3 class="project-title">Infrastructure as Code Framework</h3></div><p class="project-desc">Developed reusable Terraform and CloudFormation modules for rapid infrastructure provisioning, ensuring consistency, security, and cost optimization across multiple projects.</p><div class="project-tags"><span class="project-tag">Terraform</span> <span class="project-tag">CloudFormation</span> <span class="project-tag">Ansible</span> <span class="project-tag">Infrastructure as Code</span> <span class="project-tag">AWS</span></div><a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+<div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x1F4CA;</span><h3 class="project-title">Cloud Monitoring & Observability Solutions</h3></div><p class="project-desc">Implemented comprehensive monitoring solutions using Zabbix, Prometheus, Grafana, and CloudWatch for real-time visibility and proactive alerting across multi-cloud environments.</p><div class="project-tags"><span class="project-tag">Zabbix</span> <span class="project-tag">Prometheus</span> <span class="project-tag">Grafana</span> <span class="project-tag">CloudWatch</span> <span class="project-tag">Monitoring</span></div><a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+<div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x1F512;</span><h3 class="project-title">Multi-Cloud Solution Architecture</h3></div><p class="project-desc">Designed and implemented scalable, secure, and cost-optimized solution architectures leveraging AWS, Azure, and GCP based on business requirements and best practices.</p><div class="project-tags"><span class="project-tag">Solution Architecture</span> <span class="project-tag">AWS</span> <span class="project-tag">Azure</span> <span class="project-tag">GCP</span> <span class="project-tag">Cloud Design</span></div><a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+<div class="project-card card hover-lift"><div class="project-header"><span class="project-icon">&#x1F980;</span><h3 class="project-title">Technical Content & Blogging</h3></div><p class="project-desc">Share insights on DevOps best practices, cloud optimization, and automation strategies as a medium-level tech article writer helping teams stay updated with industry trends.</p><div class="project-tags"><span class="project-tag">Technical Writing</span> <span class="project-tag">DevOps</span> <span class="project-tag">Cloud</span> <span class="project-tag">Medium</span> <span class="project-tag">Blogging</span></div><a href="https://medium.com/@dulanjanalakmal" target="_blank" rel="noopener" class="project-link">View on GitHub &rarr;</a></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 05</span>
+        <h2 class="section-title">Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card card hover-lift"><div class="cert-icon">&#x1F3C6;</div><div class="cert-info"><h3 class="cert-name">RHCSA - Red Hat Certified System Administrator</h3><p class="cert-issuer">Red Hat</p><span class="cert-year">2024</span></div></div>
+<div class="cert-card card hover-lift"><div class="cert-icon">&#x1F3C6;</div><div class="cert-info"><h3 class="cert-name">AWS Certified Cloud Practitioner</h3><p class="cert-issuer">Amazon Web Services</p><span class="cert-year">2023</span></div></div>
+<div class="cert-card card hover-lift"><div class="cert-icon">&#x1F947;</div><div class="cert-info"><h3 class="cert-name">Microsoft Certified: Azure Fundamentals</h3><p class="cert-issuer">Microsoft</p><span class="cert-year">2023</span></div></div>
+<div class="cert-card card hover-lift"><div class="cert-icon">&#x1F947;</div><div class="cert-info"><h3 class="cert-name">Google Cloud Platform Fundamentals: Core Infrastructure</h3><p class="cert-issuer">Google Cloud</p><span class="cert-year">2023</span></div></div>
+<div class="cert-card card hover-lift"><div class="cert-icon">&#x1F947;</div><div class="cert-info"><h3 class="cert-name">LFS169: Introduction to GitOps</h3><p class="cert-issuer">Linux Foundation</p><span class="cert-year">2023</span></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 06</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-content">
+        <div class="contact-text card">
+          <h3>Let's work together on your cloud journey</h3>
+          <p>Whether you're seeking a Cloud Solutions Engineer for your team, need enterprise cloud architecture consulting, want to discuss DevOps automation strategies, or have other technical opportunities &mdash; I'd love to connect and explore how I can help.</p>
+          <a href="mailto:dulanjanalakmal@hotmail.com" class="btn btn-primary btn-large">
+            Send Email &rarr;
+          </a>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="social-card card hover-lift">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </span>
+            <div><p class="social-name">LinkedIn</p><p class="social-handle">in/dulanjanalakmal</p></div>
+          </a>
+          <a href="https://www.linkedin.com/in/dulanjanalakmal" target="_blank" rel="noopener" class="social-card card hover-lift">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </span>
+            <div><p class="social-name">LinkedIn</p><p class="social-handle">in/dulanjanalakmal</p></div>
+          </a>
+          <a href="https://medium.com/@dulanjanalakmal" target="_blank" rel="noopener" class="social-card card hover-lift">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            </span>
+            <div><p class="social-name">Medium</p><p class="social-handle">@dulanjanalakmal</p></div>
+          </a>
+          <a href="mailto:dulanjanalakmal@hotmail.com" class="social-card card hover-lift">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </span>
+            <div><p class="social-name">Email</p><p class="social-handle">Get in touch</p></div>
+          </a>
+          <a href="tel:+94767209582" class="social-card card hover-lift">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </span>
+            <div><p class="social-name">Call</p><p class="social-handle">+94 76 720 9582</p></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        Built with <span class="text-accent">&#x1F980; Rust</span> &middot; Hosted on <span class="text-accent">AWS S3 + CloudFront</span> &middot; Infrastructure as Code with <span class="text-accent">Terraform</span>
+      </p>
+      <p class="footer-copy">&copy; 2025 Dulanjana Lakmal. All rights reserved. Available for remote and contract opportunities.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

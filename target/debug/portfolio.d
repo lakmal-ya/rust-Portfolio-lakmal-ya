@@ -1,1 +1,0 @@
-/home/laki/Documents/project/personal/portfolio/target/debug/portfolio: /home/laki/Documents/project/personal/portfolio/src/main.rs /home/laki/Documents/project/personal/portfolio/templates/index.html

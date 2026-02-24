@@ -1,0 +1,54 @@
+name: Update Blog Articles from Medium
+
+on:
+  schedule:
+    # Run every 6 hours to check for new Medium articles
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  update-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Build portfolio
+        run: |
+          cd /home/laki/Documents/project/personal/portfolio
+          cargo build --release
+
+      - name: Deploy to AWS S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+        run: |
+          # Build first ensures latest articles are fetched
+          cargo build --release
+          
+          # Deploy to S3
+          aws s3 sync ./dist/ s3://your-portfolio-bucket/ --delete
+          
+          # Invalidate CloudFront cache
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+      - name: Commit changes if any
+        run: |
+          git config --global user.name "GitHub Bot"
+          git config --global user.email "bot@github.com"
+          
+          # Check if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add dist/
+            git commit -m "Auto-update: Blog articles from Medium [$(date +%Y-%m-%d)]"
+            git push
+          else
+            echo "No changes detected in generated files"

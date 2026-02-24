@@ -10,20 +10,23 @@ fn main() {
     let dist_dir = Path::new("dist");
     let dist_css_dir = dist_dir.join("css");
     let dist_js_dir = dist_dir.join("js");
+    let dist_images_dir = dist_dir.join("images");
 
-    for dir in &[dist_dir, &dist_css_dir, &dist_js_dir] {
+    for dir in &[dist_dir, &dist_css_dir, &dist_js_dir, &dist_images_dir] {
         fs::create_dir_all(dir).expect("Failed to create directory");
     }
 
     // Copy static assets
     copy_file("static/css/style.css", &dist_dir.join("css/style.css"));
     copy_file("static/js/main.js",    &dist_dir.join("js/main.js"));
+    copy_file("static/images/avatar.jpeg", &dist_images_dir.join("avatar.jpeg"));
 
     // Build HTML by substituting placeholders in template
     let html = HTML_TEMPLATE
         .replace("{{SKILLS}}",       &render_skills())
         .replace("{{EXPERIENCE}}",   &render_experience())
         .replace("{{PROJECTS}}",     &render_projects())
+        .replace("{{BLOG_ARTICLES}}", &render_blog_articles())
         .replace("{{CERTS}}",        &render_certs());
 
     fs::write(dist_dir.join("index.html"), &html)
@@ -241,46 +244,60 @@ struct ProjectData {
 fn render_projects() -> String {
     let projects: &[ProjectData] = &[
         ProjectData {
-            icon: "&#x2601;",
-            title: "Complete Cloud Infrastructure Solutions",
-            description: "Architected and deployed enterprise-grade cloud infrastructure on AWS, Azure, and GCP encompassing IAC with Terraform, automated deployments, and scalable architectures.",
-            tags: &["AWS", "Azure", "GCP", "Terraform", "CloudFormation"],
-            url: "https://www.linkedin.com/in/dulanjanalakmal",
-        },
-        ProjectData {
-            icon: "&#x2699;",
-            title: "DevOps Automation & CI/CD Pipelines",
-            description: "Implemented robust CI/CD pipelines using Jenkins and ArgoCD with automated testing, containerization, and multi-environment deployments reducing release cycles significantly.",
-            tags: &["Jenkins", "ArgoCD", "Docker", "Automation", "Bash"],
-            url: "https://www.linkedin.com/in/dulanjanalakmal",
-        },
-        ProjectData {
-            icon: "&#x1F680;",
-            title: "Infrastructure as Code Framework",
-            description: "Developed reusable Terraform and CloudFormation modules for rapid infrastructure provisioning, ensuring consistency, security, and cost optimization across multiple projects.",
-            tags: &["Terraform", "CloudFormation", "Ansible", "Infrastructure as Code", "AWS"],
-            url: "https://www.linkedin.com/in/dulanjanalakmal",
+            icon: "&#x1F980;",
+            title: "Rust Portfolio Website",
+            description: "Personal portfolio built with Rust, featuring infrastructure as code with Terraform, deployed on AWS S3 with CloudFront CDN for optimal performance and modern design.",
+            tags: &["Rust", "Terraform", "AWS", "S3", "CloudFront"],
+            url: "https://github.com/lakmal-ya/rust-Portfolio-lakmal-ya",
         },
         ProjectData {
             icon: "&#x1F4CA;",
-            title: "Cloud Monitoring & Observability Solutions",
-            description: "Implemented comprehensive monitoring solutions using Zabbix, Prometheus, Grafana, and CloudWatch for real-time visibility and proactive alerting across multi-cloud environments.",
-            tags: &["Zabbix", "Prometheus", "Grafana", "CloudWatch", "Monitoring"],
-            url: "https://www.linkedin.com/in/dulanjanalakmal",
+            title: "Azure Alerts Manager",
+            description: "Python-based tool for managing Azure alerts at scale. Easily enable/disable both metric and log-based alerts with a single command for improved operational efficiency.",
+            tags: &["Python", "Azure", "Alerts", "CLI", "Automation"],
+            url: "https://github.com/lakmal-ya/azure-alerts-manager",
         },
         ProjectData {
-            icon: "&#x1F512;",
-            title: "Multi-Cloud Solution Architecture",
-            description: "Designed and implemented scalable, secure, and cost-optimized solution architectures leveraging AWS, Azure, and GCP based on business requirements and best practices.",
-            tags: &["Solution Architecture", "AWS", "Azure", "GCP", "Cloud Design"],
-            url: "https://www.linkedin.com/in/dulanjanalakmal",
+            icon: "&#x1F680;",
+            title: "EC2 Instances Start/Stop with Terraform & Lambda",
+            description: "Automate AWS EC2 instance lifecycle management using Terraform Infrastructure as Code and AWS Lambda for cost optimization and dynamic resource management.",
+            tags: &["Terraform", "AWS", "Lambda", "EC2", "IaC"],
+            url: "https://github.com/lakmal-ya/EC2-Instances-Start-Stop-with-Terraform-Lambda",
         },
         ProjectData {
-            icon: "&#x1F980;",
-            title: "Technical Content & Blogging",
-            description: "Share insights on DevOps best practices, cloud optimization, and automation strategies as a medium-level tech article writer helping teams stay updated with industry trends.",
-            tags: &["Technical Writing", "DevOps", "Cloud", "Medium", "Blogging"],
-            url: "https://medium.com/@dulanjanalakmal",
+            icon: "&#x1F50F;",
+            title: "AWS VPN Connection Terraform Module",
+            description: "Reusable Terraform module for configuring AWS site-to-site VPN connections, enabling secure communication between on-premises and cloud infrastructure.",
+            tags: &["Terraform", "AWS", "VPN", "Networking", "IaC"],
+            url: "https://github.com/lakmal-ya/aws_vpn_connection_tf_module",
+        },
+        ProjectData {
+            icon: "&#x1F4A7;",
+            title: "Terraform Bitbucket Multi-Repo Manager",
+            description: "Terraform configuration for managing multiple Bitbucket repositories, variables, and deployments within a single project for streamlined infrastructure management.",
+            tags: &["Terraform", "Bitbucket", "IaC", "Repository Management", "HCL"],
+            url: "https://github.com/lakmal-ya/terraform-bitbucket-multi-repo-manager",
+        },
+        ProjectData {
+            icon: "&#x2693;",
+            title: "Calcom on Kubernetes",
+            description: "Deployment configuration for running Calcom scheduling application and PostgreSQL database on Kubernetes clusters for scalable calendar and scheduling solutions.",
+            tags: &["Kubernetes", "Docker", "Calcom", "PostgreSQL", "K8s"],
+            url: "https://github.com/lakmal-ya/calcom-k8s",
+        },
+        ProjectData {
+            icon: "&#x1F4E6;",
+            title: "ArgoCD GitOps",
+            description: "GitOps-based deployment strategy using ArgoCD for continuous delivery, enabling declarative infrastructure and application management through version-controlled configurations.",
+            tags: &["ArgoCD", "GitOps", "Kubernetes", "CI/CD", "DevOps"],
+            url: "https://github.com/lakmal-ya/argocd-gitops",
+        },
+        ProjectData {
+            icon: "&#x1F4A8;",
+            title: "FossFLOW - Isometric Infrastructure Diagrams",
+            description: "Create beautiful isometric infrastructure diagrams for visualizing cloud architecture. TypeScript-based tool for designing and exporting technical infrastructure diagrams.",
+            tags: &["TypeScript", "Diagrams", "Infrastructure", "Visualization", "MIT Licensed"],
+            url: "https://github.com/lakmal-ya/FossFLOW",
         },
     ];
 
@@ -305,6 +322,69 @@ fn render_projects() -> String {
             desc  = p.description,
             tags  = tags,
             url   = p.url
+        ));
+    }
+    out
+}
+
+// ── Blog Articles ─────────────────────────────────────────────────────────────
+
+fn render_blog_articles() -> String {
+    let articles: &[(&str, &str, &str, &str, &str)] = &[
+        (
+            "Setting Up Modular Capability Plugins (MCP) with Amazon Q on Arch Linux",
+            "Learn how to enhance Amazon Q with specialized MCPs for AWS architecture diagrams, documentation, and Terraform best practices on Arch Linux.",
+            "https://blog.stackademic.com/setting-up-modular-capability-plugins-mcp-with-amazon-q-on-arch-linux-1933d11fc491",
+            "May 14, 2025",
+            "AWS & AI"
+        ),
+        (
+            "Python Script to Manage Azure Alerts",
+            "Automate Azure alert management with Python. Enable, disable, and manage both metric and log-based alerts at scale with a simple script.",
+            "https://medium.com/@dulanjanalakmal/python-script-to-manage-azure-alerts-63f4c578930f",
+            "Feb 11, 2025",
+            "Azure & DevOps"
+        ),
+        (
+            "Securing Linux Filesystems: Best Practices for DevOps Security",
+            "Comprehensive guide on securing Linux filesystems including permissions, encryption, auditing, and DevOps-specific security practices.",
+            "https://medium.com/@dulanjanalakmal/securing-linux-filesystems-best-practices-for-devops-security-9f57117fe30b",
+            "Sep 3, 2024",
+            "Linux Security"
+        ),
+        (
+            "Handling Dynamic Routing in Amazon CloudFront with Lambda@Edge for a Next.js Application",
+            "Master dynamic and static routing for Next.js applications deployed on AWS CloudFront using Lambda@Edge functions.",
+            "https://blog.stackademic.com/handling-dynamic-routing-in-amazon-cloudfront-with-lambda-edge-for-a-next-js-application-a946887f4422",
+            "Jul 22, 2024",
+            "AWS & Next.js"
+        ),
+        (
+            "Automating Website Deployment to AWS EC2 Using GitHub Actions",
+            "Complete guide to automating website deployment to AWS EC2 using GitHub Actions workflows with rsync and SSH.",
+            "https://medium.com/@dulanjanalakmal/automating-website-deployment-to-aws-ec2-using-github-actions-76997c52747a",
+            "Dec 10, 2023",
+            "CI/CD"
+        ),
+    ];
+
+    let mut out = String::new();
+    for (title, description, link, date, category) in articles {
+        out.push_str(&format!(
+            "<div class=\"blog-card card hover-lift\">\
+               <div class=\"blog-header\">\
+                 <span class=\"blog-source\">{}</span>\
+                 <span class=\"blog-date\">{}</span>\
+               </div>\
+               <h3 class=\"blog-title\">{}</h3>\
+               <p class=\"blog-desc\">{}</p>\
+               <div class=\"blog-tags\">\
+                 <span class=\"blog-tag\">DevOps</span>\
+                 <span class=\"blog-tag\">Cloud Engineering</span>\
+               </div>\
+               <a href=\"{}\" target=\"_blank\" rel=\"noopener\" class=\"blog-link\">Read Article →</a>\
+             </div>\n",
+            category, date, title, description, link
         ));
     }
     out

@@ -401,11 +401,12 @@ struct CertData {
 
 fn render_certs() -> String {
     let certs: &[CertData] = &[
-        CertData { icon: "&#x1F3C6;", name: "RHCSA - Red Hat Certified System Administrator", issuer: "Red Hat", year: "2024" },
-        CertData { icon: "&#x1F3C6;", name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", year: "2023" },
-        CertData { icon: "&#x1F947;", name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", year: "2023" },
-        CertData { icon: "&#x1F947;", name: "Google Cloud Platform Fundamentals: Core Infrastructure", issuer: "Google Cloud", year: "2023" },
-        CertData { icon: "&#x1F947;", name: "LFS169: Introduction to GitOps", issuer: "Linux Foundation", year: "2023" },
+        CertData { icon: "&#x1F3C6;", name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", year: "2025" },
+        CertData { icon: "&#x1F947;", name: "HashiCorp Certified: Terraform Associate (002)", issuer: "HashiCorp", year: "2023" },
+        CertData { icon: "&#x1F947;", name: "AWS Solutions Architect Associate", issuer: "Amazon Web Services", year: "2022" },
+        CertData { icon: "&#x1F3C6;", name: "RHCSA - Red Hat Certified System Administrator", issuer: "Red Hat", year: "2019" },
+        CertData { icon: "&#x1F947;", name: "Cisco Certified Network Associate (CCNA)", issuer: "Cisco", year: "2019" },
+        CertData { icon: "&#x1F947;", name: "Google Cloud Platform Fundamentals: Core Infrastructure", issuer: "Google Cloud", year: "2019" },
     ];
 
     let mut out = String::new();

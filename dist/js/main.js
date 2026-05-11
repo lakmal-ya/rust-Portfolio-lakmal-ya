@@ -149,7 +149,7 @@ function addRevealClasses() {
     // Section headers
     document.querySelectorAll('.section-header').forEach(el => el.classList.add('reveal'));
 
-    // Cards and grid items — group them
+    // Cards and grid items - group them
     document.querySelectorAll('.skills-grid').forEach(el => el.classList.add('reveal-group'));
     document.querySelectorAll('.projects-grid').forEach(el => el.classList.add('reveal-group'));
     document.querySelectorAll('.certs-grid').forEach(el => el.classList.add('reveal-group'));

@@ -14,25 +14,26 @@ const terminalSequences = [
     {
         cmd: 'whoami --verbose',
         output: `<div><span class="key">name</span>: <span class="str">"Dulanjana Lakmal"</span></div>
-<div><span class="key">role</span>: <span class="str">"DevOps Engineer"</span></div>
-<div><span class="key">experience</span>: <span class="num">6</span>+ years</div>
+<div><span class="key">role</span>: <span class="str">"Site Reliability Engineer"</span></div>
+<div><span class="key">experience</span>: <span class="num">7</span>+ years</div>
 <div><span class="key">location</span>: <span class="str">"\uD83C\uDDF1\uD83C\uDDF0 Sri Lanka"</span></div>
 <div><span class="key">status</span>: <span class="str">"open_to_work: true"</span></div>`,
     },
     {
         cmd: 'kubectl get skills --all',
-        output: `<div><span class="comment"># Cloud & DevOps:</span></div>
-<div><span class="key">AWS</span>    <span class="key">Kubernetes</span>   <span class="key">Terraform</span></div>
-<div><span class="key">Docker</span> <span class="key">GitHub Actions</span> <span class="key">ArgoCD</span></div>
-<div><span class="comment"># Languages:</span></div>
-<div><span class="str">Python</span> <span class="str">Bash</span> <span class="str">Go</span> <span class="str">Rust</span></div>`,
+        output: `<div><span class="comment"># Observability:</span></div>
+<div><span class="key">Prometheus</span> <span class="key">Grafana</span> <span class="key">Datadog</span> <span class="key">Azure Monitor</span></div>
+<div><span class="comment"># Platform:</span></div>
+<div><span class="key">AKS</span> <span class="key">EKS</span> <span class="key">Terraform</span> <span class="key">ArgoCD</span></div>
+<div><span class="comment"># Automation:</span></div>
+<div><span class="str">Bash</span> <span class="str">Python</span> <span class="str">PowerShell</span></div>`,
     },
     {
         cmd: 'aws sts get-caller-identity',
         output: `<div><span class="key">Account</span>: <span class="num">************</span></div>
 <div><span class="key">Arn</span>: <span class="str">"arn:aws:iam::*:user/dulanjana"</span></div>
-<div><span class="key">UserId</span>: <span class="str">"devops-engineer"</span></div>
-<div><span class="comment"># AWS certified ✓</span></div>`,
+<div><span class="key">UserId</span>: <span class="str">"site-reliability-engineer"</span></div>
+<div><span class="comment"># runbook loaded, rollback points ready ✓</span></div>`,
     },
 ];
 
@@ -219,7 +220,7 @@ document.querySelectorAll('.skill-badge').forEach(badge => {
 const emailBtns = document.querySelectorAll('a[href^="mailto"]');
 emailBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        const email = 'dulanjanalakmal@gmail.com';
+        const email = 'dulanjanalakmal@hotmail.com';
         if (navigator.clipboard) {
             navigator.clipboard.writeText(email).catch(() => { });
         }

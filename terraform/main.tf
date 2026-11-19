@@ -99,7 +99,29 @@ resource "aws_s3_bucket_policy" "portfolio" {
 # ── CloudFront Distribution ──────────────────────────────────
 
 locals {
-  s3_origin_id = "portfolio-s3-origin"
+  s3_origin_id      = "portfolio-s3-origin"
+  site_domains      = length(var.domain_name) > 0 ? [var.domain_name, "www.${var.domain_name}"] : []
+  use_custom_domain = length(var.domain_name) > 0 && var.attach_custom_domain
+}
+
+# ── ACM Certificate (us-east-1, DNS-validated at the registrar) ─
+
+resource "aws_acm_certificate" "site" {
+  count    = length(var.domain_name) > 0 ? 1 : 0
+  provider = aws.us_east_1
+
+  domain_name               = var.domain_name
+  subject_alternative_names = ["www.${var.domain_name}"]
+  validation_method         = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name      = "portfolio-cert"
+    ManagedBy = "Terraform"
+  }
 }
 
 resource "aws_cloudfront_distribution" "portfolio" {
@@ -108,7 +130,7 @@ resource "aws_cloudfront_distribution" "portfolio" {
   default_root_object = "index.html"
   price_class         = "PriceClass_All"
   comment             = "Dulanjana Lakmal Portfolio"
-  aliases             = length(var.domain_name) > 0 ? [var.domain_name] : []
+  aliases             = local.use_custom_domain ? local.site_domains : []
 
   origin {
     domain_name              = aws_s3_bucket.portfolio.bucket_regional_domain_name
@@ -150,12 +172,10 @@ resource "aws_cloudfront_distribution" "portfolio" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = length(var.domain_name) == 0 ? true : false
-
-    # Uncomment if using a custom domain with ACM cert:
-    # acm_certificate_arn      = var.acm_certificate_arn
-    # ssl_support_method       = "sni-only"
-    # minimum_protocol_version = "TLSv1.2_2021"
+    cloudfront_default_certificate = local.use_custom_domain ? false : true
+    acm_certificate_arn            = local.use_custom_domain ? aws_acm_certificate.site[0].arn : null
+    ssl_support_method             = local.use_custom_domain ? "sni-only" : null
+    minimum_protocol_version       = local.use_custom_domain ? "TLSv1.2_2021" : null
   }
 
   tags = {
@@ -196,6 +216,26 @@ output "bucket_name" {
 output "cloudfront_domain" {
   description = "CloudFront distribution domain (use this URL to view your site)"
   value       = "https://${aws_cloudfront_distribution.portfolio.domain_name}"
+}
+
+output "cloudfront_dns_target" {
+  description = "Point the domain's ALIAS (apex) and CNAME (www) records here"
+  value       = aws_cloudfront_distribution.portfolio.domain_name
+}
+
+output "acm_validation_records" {
+  description = "CNAME records to add at the DNS provider to validate the ACM certificate"
+  value = length(var.domain_name) > 0 ? {
+    for o in aws_acm_certificate.site[0].domain_validation_options : o.domain_name => {
+      name  = o.resource_record_name
+      type  = o.resource_record_type
+      value = o.resource_record_value
+    }
+  } : {}
+}
+
+output "acm_certificate_status" {
+  value = length(var.domain_name) > 0 ? aws_acm_certificate.site[0].status : "n/a"
 }
 
 output "cloudfront_distribution_id" {

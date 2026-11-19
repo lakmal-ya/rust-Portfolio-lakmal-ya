@@ -26,3 +26,9 @@ variable "attach_aliases" {
   type        = bool
   default     = true
 }
+
+variable "attach_apex" {
+  description = "Attach the apex domain as well as www. Set false while the apex is still held by another CloudFront distribution."
+  type        = bool
+  default     = true
+}

@@ -47,31 +47,42 @@ fn copy_file(src: &str, dst: &Path) {
 
 fn render_skills() -> String {
     let categories: &[(&str, &[(&str, &str)])] = &[
-        ("Cloud & Infrastructure", &[
-            ("AWS", "#FF9900"), ("Azure", "#0078D4"), ("GCP", "#4285F4"),
-            ("EC2", "#FF9900"), ("S3", "#FF9900"), ("CloudFront", "#FF9900"),
-            ("RDS", "#FF9900"), ("VPC", "#FF9900"), ("IAM", "#FF9900"),
+        ("Observability & Monitoring", &[
+            ("Prometheus", "#E6522C"), ("Grafana", "#F46800"), ("Loki", "#F2CC0C"),
+            ("Datadog", "#632CA6"), ("New Relic", "#1CE783"), ("ELK", "#00BFB3"),
+            ("Azure Monitor / KQL", "#0078D4"), ("CloudWatch", "#FF9900"),
+            ("Icinga2", "#06062C"), ("Slack Alerting", "#E01E5A"),
         ]),
-        ("DevOps & Infrastructure as Code", &[
-            ("Terraform", "#7B42BC"), ("CloudFormation", "#FF9900"), ("Ansible", "#EE0000"),
-            ("Kubernetes", "#326CE5"), ("Docker", "#2496ED"), ("Linux", "#FCC624"),
+        ("Incident & Problem Management", &[
+            ("Incident Investigation", "#EF4444"), ("Root-Cause Analysis", "#F97316"),
+            ("Runbooks", "#10b981"), ("Rollback Plans", "#3B82F6"),
+            ("Change-Freeze Windows", "#8B5CF6"), ("Client Communication", "#14B8A6"),
         ]),
-        ("CI/CD & Automation", &[
-            ("Jenkins", "#D24939"), ("ArgoCD", "#EF7B4D"), ("GitHub Actions", "#10b981"),
-            ("Git", "#F05032"), ("Bash Scripting", "#4EAA25"),
+        ("Reliability & DR", &[
+            ("Multi-Region (Cloudflare)", "#F38020"), ("Cross-Region DB Replication", "#0078D4"),
+            ("HPA", "#326CE5"), ("Karpenter", "#FF9900"),
+            ("Zero-Downtime Deployments", "#10b981"), ("Backup & Recovery", "#6366F1"),
         ]),
-        ("Monitoring & Solutions", &[
-            ("Zabbix", "#E42528"), ("Prometheus", "#E6522C"), ("Grafana", "#F46800"),
-            ("CloudWatch", "#FF9900"), ("REST APIs", "#4CAF50"),
+        ("Linux & Systems", &[
+            ("RHEL", "#EE0000"), ("Ubuntu", "#E95420"), ("Windows Server", "#0078D4"),
+            ("Apache", "#D22128"), ("Nginx", "#009639"), ("DNS / DHCP", "#64748B"),
+            ("Load Balancing", "#0EA5E9"), ("SSL/TLS", "#22C55E"), ("VPN", "#A855F7"),
         ]),
-        ("Core Competencies", &[
-            ("Solution Architecture", "#9C27B0"), ("DevOps Engineering", "#FF6F00"),
-            ("System Administration", "#2196F3"), ("Cloud Operations", "#009688"),
-            ("RHCSA", "#CC0000"),
+        ("Automation & IaC", &[
+            ("Bash", "#4EAA25"), ("Python", "#3776AB"), ("PowerShell", "#5391FE"),
+            ("Terraform", "#7B42BC"), ("Ansible", "#EE0000"), ("Azure DevOps Pipelines", "#0078D4"),
         ]),
-        ("Languages & Database", &[
-            ("Bash", "#4EAA25"), ("Python", "#3776AB"), ("MySQL", "#00758F"),
-            ("MongoDB", "#13AA52"), ("Windows Server", "#0078D4"),
+        ("Containers & CI/CD", &[
+            ("Kubernetes (AKS, EKS)", "#326CE5"), ("Docker", "#2496ED"), ("Helm", "#0F1689"),
+            ("ArgoCD", "#EF7B4D"), ("GitHub Actions", "#10b981"), ("Jenkins", "#D24939"),
+            ("Azure DevOps", "#0078D4"), ("Trivy", "#1904DA"),
+        ]),
+        ("Cloud", &[
+            ("AWS", "#FF9900"), ("EKS", "#FF9900"), ("ECS", "#FF9900"), ("EC2", "#FF9900"),
+            ("VPC", "#FF9900"), ("ALB", "#FF9900"), ("RDS", "#FF9900"), ("S3", "#FF9900"),
+            ("IAM", "#FF9900"), ("KMS", "#FF9900"),
+            ("Azure", "#0078D4"), ("AKS", "#0078D4"), ("Azure SQL", "#0078D4"),
+            ("Front Door", "#0078D4"), ("Entra ID", "#0078D4"), ("GCP", "#4285F4"),
         ]),
     ];
 
@@ -110,90 +121,70 @@ fn render_experience() -> String {
     let jobs: &[Job] = &[
         Job {
             role:     "Senior Cloud Solutions Engineer",
-            company:  "IGT1 Lanka - Full-time",
-            period:   "August 2025 - Present",
-            location: "Colombo, Sri Lanka",
+            company:  "Sitecore",
+            period:   "Aug 2025 - Present",
+            location: "Sri Lanka",
             bullets: &[
-                "Design and deploy scalable cloud infrastructure solutions leveraging AWS, Azure, and GCP.",
-                "Build Infrastructure as Code solutions using Terraform and CloudFormation for enterprise clients.",
-                "Implement CI/CD pipelines and DevOps best practices to streamline deployment processes.",
-                "Lead cloud architecture reviews and provide technical guidance on solution design.",
-                "Manage and optimize cloud costs while maintaining security and performance standards.",
+                "<strong>Led the incident investigation</strong> of a live bot attack against an Azure Front Door-fronted application using KQL and Log Analytics. Traced the impact to rotating-IP traffic, a caching misconfiguration that sent every request to the origin, and HPA scaling lag, then delivered findings and mitigation steps to the client.",
+                "Support a <strong>multi-region Azure setup for high availability and disaster recovery</strong>: application traffic load-balanced across two regions by Cloudflare, with critical databases replicated between regions.",
+                "Led a Sitecore 10.3.1 to 10.4.1 platform upgrade across test and production on AKS and Azure SQL, including a SolrCloud migration from 8.11.2 to 9.8.1. Wrote and ran a <strong>21-step runbook with rollback points</strong> and content-freeze windows, coordinated across infrastructure and client teams.",
+                "Retired a legacy ELK logging stack (Elastic Cloud, Filebeat, Logstash) after mapping its dependencies, <strong>consolidating monitoring on Azure Monitor and Datadog</strong> and cutting logging costs without losing visibility.",
+                "Automated SolrCloud and ZooKeeper operations with PowerShell, including alias-based zero-downtime reindexing, and hardened the clusters with SSL/HTTPS.",
+                "<strong>Automated after-hours shutdown of non-production AKS clusters and VMs</strong> with custom scripts run from scheduled Azure DevOps pipelines under a service principal. Environments stop outside working hours and start again before the workday, cutting idle compute spend.",
             ],
         },
         Job {
-            role:     "Cloud Operations Engineer",
-            company:  "EY - Full-time",
-            period:   "January 2023 - July 2025",
+            role:     "Consultant - Cloud Ops",
+            company:  "EY",
+            period:   "Jan 2023 - Jul 2025",
             location: "Sri Lanka",
             bullets: &[
-                "Developed Infrastructure as Code (IAC) with Terraform, ensuring efficient AWS resource utilization tailored to project needs.",
-                "Automated deployment processes using Jenkins and ArgoCD, significantly reducing manual errors and improving operational efficiency.",
-                "Led POC initiatives for VMs and VNets, validating setups before deployment, which decreased deployment errors and increased reliability.",
-                "Managed multi-cloud infrastructure across AWS and Azure, optimizing for cost and performance.",
-                "Implemented monitoring and alerting solutions reducing mean time to resolution (MTTR).",
+                "Set up <strong>Azure alerting</strong> that improved system reliability and incident response times.",
+                "Built and maintained Terraform infrastructure as code to standardize and speed up AWS provisioning.",
+                "Automated CI/CD with Jenkins, ArgoCD, and Bash, reducing deployment time by around 30%.",
+                "Ran proof-of-concept builds for VMs and VNets to de-risk infrastructure ahead of full rollout.",
             ],
         },
         Job {
             role:     "DevOps Engineer",
-            company:  "KeenEye - Full-time",
-            period:   "July 2022 - December 2022",
-            location: "Western Province, Sri Lanka",
+            company:  "KeenEye",
+            period:   "Jul 2022 - Dec 2022",
+            location: "Sri Lanka",
             bullets: &[
-                "Built and maintained robust CI/CD pipelines, enhancing code integration and deployment efficiency.",
-                "Developed infrastructure as code (IAC) using Terraform and Ansible, streamlining infrastructure management.",
-                "Automated deployment processes using Jenkins, significantly reducing release cycle times.",
-                "Proactively monitored application performance and infrastructure health, leading to swift issue resolution and reduced downtime.",
+                "<strong>Built a GitOps platform on AWS EKS from scratch</strong> for a social media marketing platform: Terraform-provisioned infrastructure, ArgoCD ApplicationSets deploying 7+ independent microservices, Traefik ingress with per-service middleware, Karpenter node autoscaling, and Prometheus, Grafana, and Loki with S3-backed logs. Every workload authenticated through <strong>IRSA with zero static AWS credentials</strong> in the cluster.",
+                "Tuned application performance and <strong>monitoring</strong> to reduce downtime, and ran zero-downtime deployments with Helm and ArgoCD.",
+                "Administered PostgreSQL, MySQL, and MongoDB, including <strong>backup and recovery</strong>, roles and access, and monitoring.",
             ],
         },
         Job {
             role:     "DevOps Engineer",
-            company:  "EFutures Private Limited - Full-time",
-            period:   "August 2021 - July 2022",
+            company:  "EFutures",
+            period:   "Aug 2021 - Jul 2022",
             location: "Sri Lanka",
             bullets: &[
-                "Collaborated with product development and QA teams to ensure delivery of high-quality software products.",
-                "Maintained high system availability using Jenkins, Docker, and Git for efficient DevOps operations.",
-                "Configured and managed AWS services such as S3, EC2, RDS, and VPC for optimal cloud performance.",
-                "Automated system tasks with custom Bash and Python scripts, enhancing operational efficiency.",
-                "Increased system uptime by maintaining and monitoring AWS services with proactive alerting.",
+                "Monitored and maintained AWS services (S3, EC2, RDS, VPC) to keep systems available, and ran Jenkins, Docker, and Git delivery for product and QA teams.",
+                "Automated routine operations tasks with scripts, reducing manual work.",
             ],
         },
         Job {
-            role:     "Associate System Administrator",
-            company:  "EFutures Private Limited - Full-time",
-            period:   "October 2019 - May 2021",
+            role:     "Associate System Administrator / System Administrator",
+            company:  "EFutures",
+            period:   "May 2019 - May 2021",
             location: "Sri Lanka",
             bullets: &[
-                "Managed AWS cloud services including EC2, S3, RDS, and ELB, ensuring robust cloud operations.",
-                "Handled MySQL, Icinga2, and MongoDB for efficient database management and monitoring.",
-                "Installed and configured web servers like Apache and Nginx for secure and efficient operations.",
-                "Optimized cloud resource usage through effective AWS service management and cost optimization.",
-                "Improved database performance and uptime with proactive monitoring and management strategies.",
-            ],
-        },
-        Job {
-            role:     "System Administrator",
-            company:  "EFutures Private Limited - Full-time",
-            period:   "May 2019 - October 2019",
-            location: "Sri Lanka",
-            bullets: &[
-                "Managed cloud platforms including AWS, GCP, and Azure, ensuring optimal performance.",
-                "Administered Linux and Windows servers, maintaining system stability and performance.",
-                "Worked with version control systems to ensure efficient and organized code management.",
-                "Enhanced web server performance by optimizing configurations and reducing incidents.",
+                "Administered <strong>on-premise Linux and Windows servers</strong> alongside AWS, Azure, and GCP environments.",
+                "Configured Apache and Nginx web servers, and monitored MySQL, MongoDB, and services with <strong>Icinga2</strong>.",
             ],
         },
         Job {
             role:     "Hardware Engineer",
-            company:  "State Pharmaceutical Corporation - Full-time",
-            period:   "October 2015 - December 2016",
+            company:  "State Pharmaceutical Corporation",
+            period:   "Oct 2015 - Dec 2016",
             location: "Sri Lanka",
             bullets: &[
-                "Installed and maintained computer systems and networks to ensure smooth operations.",
-                "Efficiently diagnosed and resolved hardware and software issues.",
-                "Troubleshot ADSL routers and printers to maintain network and device functionality.",
-                "Improved network reliability through effective troubleshooting and proactive maintenance.",
+                "Provided IT support for head office and branch users, maintaining computers and networks and resolving hardware and software issues.",
+                "Assisted with deploying on-premise <strong>DHCP, DNS, and Microsoft Exchange</strong> servers.",
+                "Assisted with configuring <strong>Cisco switches and routers</strong> to connect branch office networks.",
             ],
         },
     ];
@@ -402,10 +393,11 @@ struct CertData {
 fn render_certs() -> String {
     let certs: &[CertData] = &[
         CertData { icon: "&#x1F3C6;", name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", year: "2025" },
-        CertData { icon: "&#x1F947;", name: "HashiCorp Certified: Terraform Associate (002)", issuer: "HashiCorp", year: "2023" },
-        CertData { icon: "&#x1F947;", name: "AWS Solutions Architect Associate", issuer: "Amazon Web Services", year: "2022" },
-        CertData { icon: "&#x1F3C6;", name: "RHCSA - Red Hat Certified System Administrator", issuer: "Red Hat", year: "2019" },
-        CertData { icon: "&#x1F947;", name: "Cisco Certified Network Associate (CCNA)", issuer: "Cisco", year: "2019" },
+        CertData { icon: "&#x1F4DC;", name: "LFS169: Introduction to GitOps", issuer: "The Linux Foundation", year: "Completed" },
+        CertData { icon: "&#x1F947;", name: "HashiCorp Certified: Terraform Associate (002)", issuer: "HashiCorp", year: "2023 &middot; Expired" },
+        CertData { icon: "&#x1F947;", name: "AWS Certified Solutions Architect - Associate", issuer: "Amazon Web Services", year: "2022 &middot; Expired" },
+        CertData { icon: "&#x1F3C6;", name: "Red Hat Certified System Administrator (RHCSA)", issuer: "Red Hat", year: "2019 &middot; Expired" },
+        CertData { icon: "&#x1F947;", name: "Cisco Certified Network Associate (CCNA)", issuer: "Cisco", year: "2019 &middot; Expired" },
         CertData { icon: "&#x1F947;", name: "Google Cloud Platform Fundamentals: Core Infrastructure", issuer: "Google Cloud", year: "2019" },
     ];
 

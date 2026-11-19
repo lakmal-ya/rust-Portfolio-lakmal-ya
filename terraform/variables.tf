@@ -20,3 +20,9 @@ variable "attach_custom_domain" {
   type        = bool
   default     = false
 }
+
+variable "attach_aliases" {
+  description = "Set false to attach the certificate without the aliases (used when moving the domain from another distribution)"
+  type        = bool
+  default     = true
+}

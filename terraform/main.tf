@@ -130,7 +130,7 @@ resource "aws_cloudfront_distribution" "portfolio" {
   default_root_object = "index.html"
   price_class         = "PriceClass_All"
   comment             = "Dulanjana Lakmal Portfolio"
-  aliases             = local.use_custom_domain ? local.site_domains : []
+  aliases             = local.use_custom_domain && var.attach_aliases ? local.site_domains : []
 
   origin {
     domain_name              = aws_s3_bucket.portfolio.bucket_regional_domain_name

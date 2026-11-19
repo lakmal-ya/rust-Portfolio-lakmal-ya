@@ -7,6 +7,11 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 env:
   AWS_REGION: us-east-1
@@ -56,6 +61,7 @@ jobs:
           retention-days: 7
         
       - name: Configure AWS credentials via OIDC
+        if: github.event_name != 'pull_request'
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE }}
@@ -63,18 +69,23 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
       
       - name: Verify AWS credentials
+        if: github.event_name != 'pull_request'
         run: |
           echo "AWS Identity:"
           aws sts get-caller-identity
           
       - name: Deploy to S3
+        if: github.event_name != 'pull_request'
         run: |
           echo "Deploying dist/ to S3 bucket..."
-          aws s3 sync dist/ s3://${{ vars.AWS_S3 }}/ --delete --cache-control "public, max-age=3600"
+          # Assets (fixed filenames, so keep browser cache short)
+          aws s3 sync dist/ s3://${{ vars.AWS_S3 }}/ --delete --exclude "*.html" --cache-control "public, max-age=3600"
+          # HTML always revalidated so new deploys show immediately
+          aws s3 sync dist/ s3://${{ vars.AWS_S3 }}/ --delete --exclude "*" --include "*.html" --cache-control "no-cache, no-store, must-revalidate"
           echo "Deployment complete!"
           
       - name: Invalidate CloudFront distribution
-        if: vars.AWS_CID != ''
+        if: github.event_name != 'pull_request' && vars.AWS_CID != ''
         run: |
           echo "Invalidating CloudFront distribution..."
           aws cloudfront create-invalidation \
@@ -83,7 +94,7 @@ jobs:
           echo "CloudFront invalidation initiated!"
         
       - name: Deployment summary
-        if: success()
+        if: success() && github.event_name != 'pull_request'
         run: |
           echo "✓ Portfolio successfully built and deployed!"
           echo "📍 Location: s3://${{ vars.AWS_S3 }}/"

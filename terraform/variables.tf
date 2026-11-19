@@ -15,8 +15,8 @@ variable "domain_name" {
   default     = ""
 }
 
-variable "acm_certificate_arn" {
-  description = "ACM certificate ARN for custom domain (must be in us-east-1)"
-  type        = string
-  default     = ""
+variable "attach_custom_domain" {
+  description = "Attach domain_name (+ www) to CloudFront. Set true only after the ACM certificate is ISSUED."
+  type        = bool
+  default     = false
 }

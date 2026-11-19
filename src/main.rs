@@ -22,7 +22,14 @@ fn main() {
     copy_file("static/images/avatar.jpeg", &dist_images_dir.join("avatar.jpeg"));
 
     // Build HTML by substituting placeholders in template
+    // Cache-busting: stamp asset URLs with a hash of their contents so
+    // browsers fetch the new file whenever it changes.
+    let css_v = asset_hash("static/css/style.css");
+    let js_v  = asset_hash("static/js/main.js");
+
     let html = HTML_TEMPLATE
+        .replace("{{CSS_VERSION}}", &css_v)
+        .replace("{{JS_VERSION}}",  &js_v)
         .replace("{{SKILLS}}",       &render_skills())
         .replace("{{EXPERIENCE}}",   &render_experience())
         .replace("{{PROJECTS}}",     &render_projects())
@@ -34,6 +41,15 @@ fn main() {
 
     println!("Portfolio built successfully!");
     println!("Output: ./dist/index.html");
+}
+
+fn asset_hash(path: &str) -> String {
+    use std::collections::hash_map::DefaultHasher;
+    use std::hash::{Hash, Hasher};
+    let bytes = fs::read(path).unwrap_or_default();
+    let mut h = DefaultHasher::new();
+    bytes.hash(&mut h);
+    format!("{:x}", h.finish())
 }
 
 fn copy_file(src: &str, dst: &Path) {
